@@ -1,0 +1,124 @@
+:root {
+    --bg-main: #000000;
+    --bg-card: #121212;
+    --item-bg: #1e1e1e;
+    --text-main: #ffffff;
+    --text-sub: #b3b3b3;
+    --accent: #0984e3;
+    --border: #333333;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    margin: 0; padding: 0;
+    display: flex; justify-content: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%; max-width: 480px;
+    background: var(--bg-card);
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    position: relative;
+}
+
+/* Header */
+.header { text-align: center; padding: 50px 20px 30px; }
+
+.profile-pic {
+    width: 110px; height: 110px;
+    border-radius: 50%; object-fit: cover;
+    border: 3px solid var(--accent); padding: 4px;
+    background: var(--bg-main);
+}
+
+h1 { font-size: 1.4rem; margin: 15px 0 5px; letter-spacing: 0.5px; }
+.subtitle { color: var(--text-sub); font-size: 0.9rem; margin: 0; font-weight: 300; }
+
+/* Main Links */
+.links-container { flex: 1; padding: 20px; }
+
+.link-card {
+    display: flex; align-items: center;
+    background: var(--item-bg);
+    border: 1px solid var(--border);
+    color: var(--text-main);
+    padding: 16px; margin-bottom: 15px;
+    border-radius: 12px; font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    user-select: none;
+}
+
+.link-card:hover {
+    transform: translateY(-2px);
+    background: #2d2d2d;
+    border-color: var(--accent);
+    box-shadow: 0 5px 15px rgba(9, 132, 227, 0.2);
+}
+
+.link-icon { width: 30px; text-align: center; margin-right: 15px; font-size: 1.1rem; color: var(--accent); }
+
+/* SOCIAL LINKS (BAWAH) */
+.socials-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px; /* Jarak antara icon */
+    padding: 10px 20px 30px 20px;
+}
+
+.social-btn {
+    color: var(--text-sub);
+    font-size: 1.8rem;
+    transition: transform 0.2s, color 0.2s;
+    text-decoration: none;
+}
+
+.social-btn:hover {
+    color: var(--accent);
+    transform: scale(1.2); /* Besar sikit bila hover */
+}
+
+/* Footer */
+.footer { padding: 20px; text-align: center; border-top: 1px solid var(--border); color: #444; font-size: 0.8rem; }
+
+/* MODAL */
+.modal-overlay {
+    display: none; position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    justify-content: center; align-items: center;
+}
+
+.modal-box {
+    background: #1e1e1e;
+    padding: 30px; border-radius: 15px;
+    width: 85%; max-width: 320px;
+    text-align: center;
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+.modal-box h3 { margin-top: 0; color: var(--text-main); }
+.modal-box p { color: var(--text-sub); margin-bottom: 20px; }
+
+.pass-input {
+    width: 100%; padding: 12px; margin-bottom: 20px;
+    background: #000; border: 1px solid #444;
+    color: white; border-radius: 8px;
+    font-size: 1.1rem; text-align: center; letter-spacing: 2px;
+    box-sizing: border-box;
+}
+.pass-input:focus { outline: none; border-color: var(--accent); }
+
+.modal-btns { display: flex; gap: 10px; }
+.btn-submit { flex: 1; padding: 12px; border: none; border-radius: 8px; background: var(--accent); color: white; font-weight: bold; cursor: pointer; }
+.btn-cancel { flex: 1; padding: 12px; border: none; border-radius: 8px; background: #333; color: white; cursor: pointer; }

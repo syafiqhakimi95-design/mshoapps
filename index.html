@@ -5,359 +5,117 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Syafiq Hakimi | Links</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        :root {
-            --primary: #2d3436;
-            --accent: #0984e3;
-            --bg: #f5f6fa;
-            --card: #ffffff;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg);
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            min-height: 100vh;
-        }
-
-        /* Container macam HP */
-        .container {
-            width: 100%;
-            max-width: 480px;
-            background: var(--card);
-            min-height: 100vh;
-            position: relative;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* Header & Logo */
-        .header {
-            text-align: center;
-            padding: 40px 20px 20px;
-        }
-
-        .profile-pic {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--accent);
-            padding: 3px;
-        }
-
-        h1 {
-            font-size: 1.2rem;
-            color: var(--primary);
-            margin: 10px 0 5px;
-        }
-
-        p.subtitle {
-            color: #636e72;
-            font-size: 0.9rem;
-            margin: 0;
-        }
-
-        /* List Links */
-        .links-container {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-        }
-
-        .link-card {
-            display: block;
-            background: #fff;
-            border: 1px solid #dfe6e9;
-            color: var(--primary);
-            text-decoration: none;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 12px;
-            text-align: center;
-            font-weight: 600;
-            transition: all 0.2s ease;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            position: relative;
-        }
-
-        .link-card:hover {
-            transform: scale(1.02);
-            border-color: var(--accent);
-            color: var(--accent);
-        }
-
-        /* Footer Socials */
-        .footer {
-            padding: 20px;
-            text-align: center;
-            background: #fff;
-            border-top: 1px solid #eee;
-        }
-
-        .social-icon {
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin: 0 15px;
-            transition: color 0.3s;
-        }
-
-        .social-icon:hover { color: var(--accent); }
-
-        /* Admin / Edit Mode Styles */
-        .admin-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: none;
-            border: none;
-            color: #b2bec3;
-            cursor: pointer;
-        }
-
-        #login-modal, #admin-panel {
-            display: none; /* Hidden by default */
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.8);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            width: 90%;
-            max-width: 400px;
-        }
-
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-
-        .btn {
-            background: var(--accent);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-            font-weight: bold;
-        }
-
-        .btn-delete {
-            background: #ff7675;
-            width: auto;
-            padding: 5px 10px;
-            font-size: 0.8rem;
-            position: absolute;
-            right: 10px;
-            top: 12px;
-            z-index: 10;
-        }
-        
-        .admin-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="container">
-        <button class="admin-btn" onclick="showLogin()"><i class="fa-solid fa-gear"></i></button>
-
         <div class="header">
-            <img src="logo.png" alt="Syafiq Logo" class="profile-pic" onerror="this.src='https://via.placeholder.com/100?text=Logo'">
-            <h1 id="page-title">Syafiq Hakimi</h1>
-            <p class="subtitle" id="page-subtitle">Optometry Lecturer & Content Creator</p>
+            <img id="imgLogo" src="" alt="Profile" class="profile-pic" onerror="this.src='https://ui-avatars.com/api/?name=Syafiq+Hakimi&background=0984e3&color=fff&size=128'">
+            <h1 id="txtName">Loading...</h1>
+            <p class="subtitle" id="txtSub">...</p>
         </div>
 
-        <div class="links-container" id="link-list">
-            <p style="text-align:center; color:#999;">Loading links...</p>
-        </div>
+        <div class="links-container" id="linkContainer"></div>
+
+        <div class="socials-container" id="socialContainer">
+            </div>
 
         <div class="footer">
-            <a href="https://www.tiktok.com/@syafiqkimiii" target="_blank" class="social-icon"><i class="fa-brands fa-tiktok"></i></a>
-            <a href="https://www.linkedin.com/in/syafiqhakimiii/" target="_blank" class="social-icon"><i class="fa-brands fa-linkedin"></i></a>
+            &copy; 2026 Syafiq Hakimi
         </div>
     </div>
 
-    <div id="login-modal">
-        <div class="modal-content">
-            <h2>Admin Login</h2>
-            <input type="email" id="email" placeholder="Email ">
-            <input type="password" id="password" placeholder="Password">
-            <button class="btn" onclick="handleLogin()">Login</button>
-            <button style="margin-top:10px; background:transparent; color:#888; border:none; width:100%" onclick="hideLogin()">Cancel</button>
-        </div>
-    </div>
-
-    <div id="admin-panel">
-        <div class="modal-content" style="max-height: 80vh; overflow-y: auto;">
-            <div class="admin-header">
-                <h2>Manage Links</h2>
-                <button onclick="logout()" style="background:none; border:none; color:red;">Logout</button>
+    <div id="passModal" class="modal-overlay">
+        <div class="modal-box">
+            <h3><i class="fa-solid fa-shield-halved" style="color:#0984e3; font-size:2rem; margin-bottom:10px;"></i><br>Akses Terhad</h3>
+            <p>Sila masukkan kunci akses.</p>
+            <input type="password" id="inputPass" class="pass-input" placeholder="****">
+            <div class="modal-btns">
+                <button class="btn-cancel" onclick="closeModal()">Batal</button>
+                <button class="btn-submit" onclick="submitPass()">Buka</button>
             </div>
-            
-            <div style="background:#f1f1f1; padding:15px; border-radius:8px; margin-bottom:20px;">
-                <h3>Add New Link</h3>
-                <input type="text" id="new-title" placeholder="Button Name (e.g. My Notes)">
-                <input type="text" id="new-url" placeholder="URL (https://...)">
-                <button class="btn" onclick="addLink()">+ Add Link</button>
-            </div>
-
-            <h3>Current Links</h3>
-            <div id="admin-link-list">
-                </div>
-            
-            <button class="btn" style="background:#636e72; margin-top:20px;" onclick="closeAdmin()">Close Panel</button>
         </div>
     </div>
 
     <script type="module">
-        // Kita guna link CDN sebab tak pakai installer (NPM)
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getFirestore, collection, addDoc, onSnapshot, deleteDoc, doc, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-        import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+        // Import SocialList sekali
+        import { profileData, linkList, socialList } from './data.js';
 
-        // CONFIGURATION FIREBASE KAU (Dah dimasukkan)
-        const firebaseConfig = {
-          apiKey: "AIzaSyDwAI__OuUIIF1OkfvReDKwFzKxxJQu4Og",
-          authDomain: "syafiqlinketree.firebaseapp.com",
-          projectId: "syafiqlinketree",
-          storageBucket: "syafiqlinketree.firebasestorage.app",
-          messagingSenderId: "317461662092",
-          appId: "1:317461662092:web:64a7f6838a51ac78cc2ea9",
-          measurementId: "G-PPYHNW4ZX2"
+        // 1. Profile
+        document.getElementById('txtName').innerText = profileData.name;
+        document.getElementById('txtSub').innerText = profileData.subtitle;
+        if(profileData.logo) document.getElementById('imgLogo').src = profileData.logo;
+
+        // Variables
+        let currentEncryptedUrl = "";
+
+        // Global Window Functions (Sebab type=module)
+        window.closeModal = () => {
+            document.getElementById('passModal').style.display = 'none';
+            document.getElementById('inputPass').value = "";
         };
 
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-        const auth = getAuth(app);
+        window.submitPass = () => {
+            const userPass = document.getElementById('inputPass').value;
+            const btn = document.querySelector('.btn-submit');
+            const originalText = btn.innerText;
+            btn.innerText = "...";
 
-        // --- PUBLIC FUNCTIONS (Global Scope) ---
-        window.showLogin = () => document.getElementById('login-modal').style.display = 'flex';
-        window.hideLogin = () => document.getElementById('login-modal').style.display = 'none';
-        window.closeAdmin = () => document.getElementById('admin-panel').style.display = 'none';
-
-        // --- AUTH LOGIC ---
-        window.handleLogin = () => {
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            
-            signInWithEmailAndPassword(auth, email, password)
-                .then((userCredential) => {
-                    // Tak perlu alert success kalau nak smooth, terus masuk admin
-                    hideLogin();
-                    document.getElementById('admin-panel').style.display = 'flex';
-                })
-                .catch((error) => {
-                    alert("Salah email atau password. Cuba lagi.");
-                    console.error(error);
-                });
-        };
-
-        window.logout = () => {
-            signOut(auth).then(() => {
-                alert("Dah logout.");
-                closeAdmin();
-            });
-        };
-
-        // Check if admin is already logged in
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                console.log("Admin detect: " + user.email);
-            }
-        });
-
-        // --- DATABASE LOGIC (FIRESTORE) ---
-        const linksRef = collection(db, "links");
-        // Sort by time created (newest top or bottom, here we put newest bottom so old links stay up)
-        const q = query(linksRef, orderBy("createdAt", "asc")); 
-
-        // Real-time Listener 
-        onSnapshot(q, (snapshot) => {
-            const linkList = document.getElementById('link-list');
-            const adminList = document.getElementById('admin-link-list');
-            
-            linkList.innerHTML = "";
-            adminList.innerHTML = "";
-
-            if(snapshot.empty){
-                linkList.innerHTML = "<p style='text-align:center'>Belum ada link lagi.</p>";
-            }
-
-            snapshot.forEach((doc) => {
-                const data = doc.data();
-                const id = doc.id;
-
-                // 1. Render Public View
-                linkList.innerHTML += `
-                    <a href="${data.url}" target="_blank" class="link-card">
-                        ${data.title}
-                    </a>
-                `;
-
-                // 2. Render Admin View
-                adminList.innerHTML += `
-                    <div style="background:#fff; border:1px solid #ddd; padding:10px; margin-bottom:10px; border-radius:5px; position:relative;">
-                        <strong>${data.title}</strong><br>
-                        <small style="color:#666; word-break: break-all;">${data.url}</small>
-                        <button class="btn-delete" onclick="window.deleteLinkItem('${id}')">Delete</button>
-                    </div>
-                `;
-            });
-        });
-
-        // Add Link Function
-        window.addLink = async () => {
-            const title = document.getElementById('new-title').value;
-            const url = document.getElementById('new-url').value;
-
-            if(title && url) {
+            setTimeout(() => {
                 try {
-                    await addDoc(collection(db, "links"), {
-                        title: title,
-                        url: url,
-                        createdAt: serverTimestamp()
-                    });
-                    // Reset input
-                    document.getElementById('new-title').value = "";
-                    document.getElementById('new-url').value = "";
+                    const bytes = CryptoJS.AES.decrypt(currentEncryptedUrl, userPass);
+                    const originalUrl = bytes.toString(CryptoJS.enc.Utf8);
+                    if (originalUrl.startsWith("http")) {
+                        window.open(originalUrl, "_blank");
+                        closeModal();
+                    } else { throw new Error(); }
                 } catch (e) {
-                    alert("Error tak boleh save: " + e.message);
+                    alert("Kunci Salah!");
+                    document.getElementById('inputPass').value = "";
                 }
-            } else {
-                alert("Isi dua-dua kotak tu dulu.");
-            }
+                btn.innerText = originalText;
+            }, 300);
         };
 
-        // Delete Link Function
-        window.deleteLinkItem = async (id) => {
-            if(confirm("Betul nak delete link ni?")) {
-                await deleteDoc(doc(db, "links", id));
-            }
-        };
+        // 2. Render MAIN Links
+        const container = document.getElementById('linkContainer');
+        linkList.forEach(link => {
+            const btn = document.createElement('div');
+            btn.className = "link-card";
+            
+            const iconClass = link.icon || 'fa-solid fa-link';
+            const lockIcon = link.encryptedUrl ? 
+                '<i class="fa-solid fa-lock" style="font-size:0.8rem; margin-left:auto; color:#666;"></i>' : 
+                '<i class="fa-solid fa-chevron-right" style="font-size:0.8rem; margin-left:auto; color:#333;"></i>';
 
+            btn.innerHTML = `<div class="link-icon"><i class="${iconClass}"></i></div><span>${link.title}</span>${lockIcon}`;
+
+            btn.onclick = () => {
+                if (link.encryptedUrl) {
+                    currentEncryptedUrl = link.encryptedUrl;
+                    document.getElementById('passModal').style.display = 'flex';
+                    document.getElementById('inputPass').focus();
+                } else { window.open(link.url, "_blank"); }
+            };
+            container.appendChild(btn);
+        });
+
+        // 3. Render SOCIAL Links (Bahagian Bawah)
+        const socialCont = document.getElementById('socialContainer');
+        socialList.forEach(soc => {
+            const a = document.createElement('a');
+            a.href = soc.url;
+            a.target = "_blank";
+            a.className = "social-btn";
+            a.innerHTML = `<i class="${soc.icon}"></i>`;
+            socialCont.appendChild(a);
+        });
+
+        document.getElementById('inputPass').addEventListener("keypress", (e) => {
+            if(e.key === "Enter") { e.preventDefault(); submitPass(); }
+        });
     </script>
 </body>
 </html>
