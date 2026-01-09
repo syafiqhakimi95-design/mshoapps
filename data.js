@@ -1,4 +1,4 @@
-// FAIL: data.js
+// data.js
 
 const profileData = {
     name: "Syafiq Hakimi",
@@ -48,9 +48,13 @@ const linkList = [
     },
     {
         title: "JSU generator Table 4",
-        // Kod rahsia baru untuk Exam Pro:
         encryptedUrl: "U2FsdGVkX18mLPRHGAdpX3JAl4/8M51YrZ8FcoSH3IfQa9yq/7M2bYR6/Wnuv7ySm1+eToTEAN2J1d2ia1secA==",
-        icon: "fa-solid fa-table" // Ikon Jadual
+        icon: "fa-solid fa-table"
+    },
+    {
+        title: "Thesis Citator",
+        encryptedUrl: "U2FsdGVkX1/bwNdyqmF/liWwCNpKRIIYn0bIUmyT+7QwPmvOFm654o4pQBtcC6fPuqRDjTk33801oabAOi3G5QujGELGLvJBbIdXTPQkfKY=",
+        icon: "fa-solid fa-book-open" // Ikon buku/thesis
     }
 ];
 
