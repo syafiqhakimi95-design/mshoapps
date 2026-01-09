@@ -34,6 +34,11 @@ const linkList = [
         url: "https://syafiqhakimi95-design.github.io/lensometer-apps/",
         icon: "fa-solid fa-crosshairs"
     },
+    {
+        title: "Aberration Simulator", // Link baru ditambah
+        url: "https://syafiqhakimi95-design.github.io/abberation/",
+        icon: "fa-solid fa-glasses"
+    },
 
     // --- LINK RAHSIA (Encrypted - Kena Password) ---
     {
@@ -54,7 +59,7 @@ const linkList = [
     {
         title: "Thesis Citator",
         encryptedUrl: "U2FsdGVkX1/bwNdyqmF/liWwCNpKRIIYn0bIUmyT+7QwPmvOFm654o4pQBtcC6fPuqRDjTk33801oabAOi3G5QujGELGLvJBbIdXTPQkfKY=",
-        icon: "fa-solid fa-book-open" // Ikon buku/thesis
+        icon: "fa-solid fa-book-open"
     }
 ];
 
